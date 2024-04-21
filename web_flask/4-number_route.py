@@ -1,7 +1,7 @@
-tarts a Flask web application
-"""
-
+#!/usr/bin/python3
 from flask import Flask
+"""class Flask"""
+
 app = Flask(__name__)
 
 
