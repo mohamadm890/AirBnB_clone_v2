@@ -14,7 +14,7 @@ def dispose(exception):
     storage.close()
 
 
-@app.route('/states_list')
+@app.route('/states_list', strict_slashes=False)
 def states():
     """ Display list of all the states """
     states = storage.all(State)
