@@ -1,29 +1,16 @@
 #!/usr/bin/python3
-'''
-    Package initializer
-'''
+"""
+This module instantiates an object of storage depending on type
+Contains the model of all objects
+"""
 from os import getenv
-
-from models.state import State
-from models.city import City
-from models.user import User
-from models.review import Review
-from models.base_model import BaseModel
-from models.amenity import Amenity
-from models.place import Place
+from models.engine.db_storage import DBStorage
+from models.engine.file_storage import FileStorage
 
 
-classes = {"User": User, "BaseModel": BaseModel,
-           "Place": Place, "State": State,
-           "City": City, "Amenity": Amenity,
-           "Review": Review}
-
-storage_type = getenv("HBNB_TYPE_STORAGE")
-
-if storage_type == 'db':
-    from models.engine.db_storage import DBStorage
+if getenv('HBNB_TYPE_STORAGE') == 'db':
     storage = DBStorage()
 else:
-    from models.engine.file_storage import FileStorage
     storage = FileStorage()
+
 storage.reload()
